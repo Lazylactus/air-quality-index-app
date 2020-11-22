@@ -6,7 +6,7 @@ require('dotenv').config();
 const { App } = require('@slack/bolt');
 const env = require('./.env');
 
-app.use('/chef-bot-aj.herokuapp.com', (request, response) => {
+app.use('/', (request, response) => {
   const challenge = request.body;
 
   response.status(200).json({
