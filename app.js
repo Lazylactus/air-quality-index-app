@@ -1,3 +1,7 @@
+const fs = require('fs');
+const express = require('express');
+const app = express();
+
 require('dotenv').config();
 const { App } = require('@slack/bolt');
 const env = require('./.env');
@@ -12,3 +16,5 @@ const bot = new App({
   console.log('Starting Server');
   console.log('Bolt is running');
 })();
+
+module.exports = app;

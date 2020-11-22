@@ -1,9 +1,20 @@
-//import * as functions from 'firebase-functions';
-const functions = require('firebase-functions');
+// //import * as functions from 'firebase-functions';
+// const functions = require('firebase-functions');
+// const https = require('https');
+
+// export const myBot = functions.https.onrequest((request, response) => {
+//   const { challenge } = request.body;
+
+//   response.send({ challenge });
+// });
+
+const fs = require('fs');
 const https = require('https');
+const url = require('url');
+const app = require('./app');
 
-export const myBot = functions.https.onrequest((request, response) => {
-  const { challenge } = request.body;
+const server = https.createServer((request, respone) => {
+  const challenge = request.body;
 
-  response.send({ challenge });
+  respone.send(challenge);
 });
