@@ -9,7 +9,7 @@ const env = require('./.env');
 app.use('/', (request, response) => {
   const challenge = request.body;
 
-  response.status(200).json({
+  response.status(200).plain({
     challenge,
   });
 });
