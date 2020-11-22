@@ -1,28 +1,12 @@
-const fs = require('fs');
 const express = require('express');
 const app = express();
 
-require('dotenv').config();
-const { App } = require('@slack/bolt');
-const env = require('./.env');
+const port = 8080;
 
-app.use('/', (request, response) => {
-  const challenge = request.body;
-
-  response.status(200).plain({
-    challenge,
-  });
+app.get('/', (request, response) => {
+  response.send('Hello World');
 });
 
-const bot = new App({
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  token: process.env.BOT_TOKEN,
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });
-
-(async () => {
-  await bot.start(process.env.PORT || 3000);
-  console.log('Starting Server');
-  console.log('Bolt is running');
-})();
-
-// module.exports = app;
