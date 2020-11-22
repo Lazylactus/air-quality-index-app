@@ -9,6 +9,6 @@ const bot = new App({
 
 (async () => {
   await bot.start(process.env.PORT || 3000);
-
+  console.log('Starting Server');
   console.log('Bolt is running');
 })();
