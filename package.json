@@ -1,0 +1,21 @@
+{
+  "name": "slackbot",
+  "version": "1.0.0",
+  "description": "Bot that generates random food recipes",
+  "main": "slackBot",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lazylactus",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^2.4.1",
+    "@slack/rtm-api": "^5.0.5",
+    "@slack/web-api": "^5.13.0",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "prettier": "^2.2.0",
+    "yarn": "^1.22.10"
+  }
+}
