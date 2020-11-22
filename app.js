@@ -16,3 +16,7 @@ app.listen(port, () => {
 app.post('/mychef', function (req, res) {
   res.json({ requestBody: req.body });
 });
+
+app.post('/mychef hello', function (req, res) {
+  res.json({ requestBody: req.body, data: 'Hello my friend' });
+});
