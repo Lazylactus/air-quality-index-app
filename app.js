@@ -12,5 +12,5 @@ app.listen(port, () => {
 });
 
 app.post('/mychef', function (req, res) {
-  res.send('My Chef says Hello! with ', req);
+  res.send('My Chef says Hello! with ', req.body);
 });
