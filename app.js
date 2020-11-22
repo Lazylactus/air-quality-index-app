@@ -9,7 +9,9 @@ const env = require('./.env');
 app.use('/chef-bot-aj.herokuapp.com', (request, response) => {
   const challenge = request.body;
 
-  response.send(challenge);
+  response.status(200).json({
+    challenge,
+  });
 });
 
 const bot = new App({
