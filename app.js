@@ -16,11 +16,11 @@ app.get('/', (request, response) => {
 app.post('/mychef', function (request, response) {
   const data = request.body.text;
   if (data === 'hello' || data === 'Hello') {
-    response.json('Hello my friend');
+    response.send('Hello my friend');
   } else if (data === 'breakfast') {
-    response.json('Would like to have some cereals');
+    response.send('Would like to have some cereals');
   } else {
-    response.json('Hohoho how can I help mate?');
+    response.send('Hohoho how can I help mate?');
   }
 });
 
