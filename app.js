@@ -1,6 +1,5 @@
 const { response } = require('express');
 const express = require('express');
-const imdb = require('imdb-api');
 const app = express();
 const port = process.env.PORT || 3000;
 
