@@ -23,7 +23,6 @@ app.post('/mychef', function (request, response) {
       'Hello stranger, I am an AQI(Air quality index) collector. I collect AQIs of places around the global and you can call me anytime to know about em'
     );
   } else if (data === 'city') {
-    response.send('Type the city name');
     app.on('message', (data) => {
       if (data.type !== 'message') return;
 
