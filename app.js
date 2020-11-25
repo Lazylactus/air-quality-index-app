@@ -23,18 +23,14 @@ app.post('/mychef', function (request, response) {
       'Hello stranger, I am an AQI(Air quality index) collector. I collect AQIs of places around the global and you can call me anytime to know about em'
     );
   } else {
-    app.on('message', (data) => {
-      // if (data.type !== 'message') return;
-
-      handleMessage(data.text);
-    });
+    handleMessage(data);
   }
 });
 
 // RESPONSE TO DATA
 function handleMessage(message) {
-  message = message.split(' ');
-  message = message[1];
+  // message = message.split(' ');
+  // message = message[1];
   app.get(
     `http://api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
     () => {
