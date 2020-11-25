@@ -23,6 +23,8 @@ app.post('/mychef', function (request, response) {
   //     'Hello stranger, I am an AQI(Air quality index) collector. I collect AQIs of places around the global and you can call me anytime to know about em'
   //   );
   // } else {
+  data = data.toString();
+  console.log(data);
   handleMessage(data);
   //}
 });
