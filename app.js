@@ -25,7 +25,9 @@ app.post('/mychef', function (request, response) {
   // } else {
   data = data.toString();
   console.log(data);
-  handleMessage(data);
+  const output = handleMessage(data);
+  response.send(output);
+
   //}
 });
 
@@ -36,9 +38,10 @@ function handleMessage(message) {
   app.get(
     `http://api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
     (request, response) => {
-      response.send(data.api);
+      const result = response.data.api;
     }
   );
+  return result;
 }
 
 // ERROR HANDLER
