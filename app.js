@@ -30,7 +30,8 @@ function handleMessage(message) {
   app.get(
     `/api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
     (request, response) => {
-      var result = response.data.api;
+      var result;
+      result = response.data.api;
     }
   );
   return result;
