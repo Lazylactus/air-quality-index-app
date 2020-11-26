@@ -1,5 +1,6 @@
 const { response } = require('express');
 const express = require('express');
+const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -29,13 +30,14 @@ app.post('/mychef', function (request, response) {
 function handleMessage(message) {
   console.log('handle ', message);
   let result;
-  app.get(
-    `http://api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
-    (request, response) => {
-      result = response.data.api;
-      console.log('API Returned ', result);
-    }
-  );
+  axios
+    .get(
+      `http://api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`
+    )
+    .then((response) => {
+      console.log('result');
+      result = response.body.data.api;
+    });
   return result;
 }
 
