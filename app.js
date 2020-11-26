@@ -18,8 +18,8 @@ app.get('/', (request, response) => {
 
 app.post('/mychef', function (request, response) {
   var data = request.body.text;
-  response.send(data);
   data = data.toString();
+  response.send(data);
 
   // console.log(data);
   // var output = handleMessage(data);
