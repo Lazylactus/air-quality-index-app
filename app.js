@@ -14,13 +14,13 @@ app.get('/', (request, response) => {
   response.send('Hello Stranger!');
 });
 
-// ROUTE HANDLER
+// POST HANDLER
 
 app.post('/mychef', function (request, response) {
   var data = request.body.text;
   data = data.toString();
 
-  const ouput = handleMessage(data);
+  let output = handleMessage(data);
   response.send(output);
 });
 
@@ -29,7 +29,7 @@ function handleMessage(message) {
   app.get(
     `/api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
     (request, response) => {
-      var result;
+      let result;
       result = response.body.data.api;
     }
   );
