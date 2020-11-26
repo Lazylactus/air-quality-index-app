@@ -19,24 +19,22 @@ app.get('/', (request, response) => {
 app.post('/mychef', function (request, response) {
   var data = request.body.text;
   data = data.toString();
-  response.send(data);
 
-  // console.log(data);
-  // var output = handleMessage(data);
-  // response.send(output);
+  const ouput = handleMessage(data);
+  response.send(output);
 });
 
 // RESPONSE TO DATA
-// function handleMessage(message) {
-//   app.get(
-//     `/api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
-//     (request, response) => {
-//       var result;
-//       result = response.body.data.api;
-//     }
-//   );
-//   return result;
-// }
+function handleMessage(message) {
+  app.get(
+    `/api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
+    (request, response) => {
+      var result;
+      result = response.body.data.api;
+    }
+  );
+  return result;
+}
 
 // ERROR HANDLER
 app.on('error', (err) => console.log(err));
