@@ -29,7 +29,7 @@ app.post('/mychef', function (request, response) {
 function handleMessage(message) {
   let result;
   app.get(
-    `/api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
+    `http://api.waqi.info/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
     (request, response) => {
       result = response.body.data.api;
       console.log('API Returned ', result);
