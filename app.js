@@ -1,8 +1,9 @@
-const { response } = require('express');
+const { response, json } = require('express');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const http = require('http');
+const fetch = require('node-fetch');
 
 app.use(
   express.urlencoded({
@@ -17,39 +18,37 @@ app.get('/', (request, response) => {
 
 // POST HANDLER
 
-app.post('/mychef', function (request, response) {
+app.post('/mychef', async function (request, response) {
   var data = request.body.text;
   data = data.toString();
 
-  let output = handleMessage(data);
-  console.log('return output ', output);
-  response.send(output);
+  try {
+    output = await handleMessage(data);
+    let qualityStatus = 'Good! (Breathe Free)';
+    if (output > 100) {
+      qualityStatus = 'Bad (Wear Mask)';
+    }
+    response.send(`AQI: ${output} -- Status: ${qualityStatus}`);
+  } catch (e) {
+    response.send(`Sorry unable to find any data for ${data}`);
+  }
 });
 
 // RESPONSE TO DATA
-function handleMessage(message) {
+async function handleMessage(message) {
   console.log('handle ', message);
 
-  var options = {
-    host: 'api.waqi.info',
-    path: `/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`,
-  };
+  host = 'https://api.waqi.info';
+  path = `/feed/${message}/?token=82033d0b4fc868607cc0dc55567b8ecc4bac9822`;
 
-  callback = function (response) {
-    var str = '';
-
-    //another chunk of data has been received, so append it to `str`
-    response.on('data', function (chunk) {
-      str += chunk;
-    });
-
-    //the whole response has been received, so we just print it out here
-    response.on('end', function () {
-      console.log('response: ', response.body);
-    });
-  };
-
-  http.request(options, callback).end();
+  try {
+    const res = await fetch(host + path);
+    const json = await res.json();
+    console.log('res ', json);
+    return json['data']['aqi'];
+  } catch (e) {
+    console.log('error ', e);
+  }
 }
 
 // ERROR HANDLER
