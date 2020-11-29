@@ -19,7 +19,21 @@ app.get('/', (request, response) => {
 // POST HANDLER
 
 app.post('/mychef', function (request, response) {
-  response.send('Hello! Type /myAQI _____ (city name) to know its AQI');
+  try {
+    response.send(
+      'Hello! My name is myAQI. I have massive colllection of AQIs. Call me any time to know about em'
+    );
+  } catch (error) {
+    response.send(error);
+  }
+});
+
+app.post('/mychef help', function (request, response) {
+  try {
+    response.send("Hello! Type '/myAQI _____ (city name)' to know its AQI");
+  } catch (error) {
+    response.send(error);
+  }
 });
 
 app.post('/mychef', async function (request, response) {
