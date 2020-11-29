@@ -27,6 +27,8 @@ app.post('/mychef', async function (request, response) {
     let qualityStatus = 'Good! (Breathe Free)';
     if (output > 100) {
       qualityStatus = 'Bad (Wear Mask)';
+    } else if (output > 75 && output < 100) {
+      qualityStatus = 'Moderate (Stay Cautious)';
     }
     response.send(
       `City: ${data} -- AQI: ${output} -- Status: ${qualityStatus}`
