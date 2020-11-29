@@ -18,6 +18,10 @@ app.get('/', (request, response) => {
 
 // POST HANDLER
 
+app.post('/mychef', function (request, response) {
+  response.send('Hello! Type /myAQI _____ (city name) to know its AQI');
+});
+
 app.post('/mychef', async function (request, response) {
   var data = request.body.text;
   data = data.toString();
