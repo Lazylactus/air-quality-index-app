@@ -28,7 +28,9 @@ app.post('/mychef', async function (request, response) {
     if (output > 100) {
       qualityStatus = 'Bad (Wear Mask)';
     }
-    response.send(`AQI: ${output} -- Status: ${qualityStatus}`);
+    response.send(
+      `City: ${data} -- AQI: ${output} -- Status: ${qualityStatus}`
+    );
   } catch (e) {
     response.send(`Sorry unable to find any data for ${data}`);
   }
