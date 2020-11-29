@@ -22,7 +22,7 @@ app.post('/mychef', async function (request, response) {
   var data = request.body.text;
   var none = '';
 
-  if (data === none)
+  if (data === none || data == undefined)
     response.send(
       'Hello! My name is myAQI. I have massive collection of AQIs. Call me any time to know about em!'
     );
