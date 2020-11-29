@@ -18,42 +18,37 @@ app.get('/', (request, response) => {
 
 // POST HANDLER
 
-// app.post('/mychef', function (request, response) {
-//   try {
-//     response.send(
-//       'Hello! My name is myAQI. I have massive collection of AQIs. Call me any time to know about em'
-//     );
-//   } catch (error) {
-//     response.send(error);
-//   }
-// });
-
-// app.post('/mychef help', function (request, response) {
-//   try {
-//     response.send("Hello! Type '/myAQI _____ (city name)' to know its AQI");
-//   } catch (error) {
-//     response.send(error);
-//   }
-// });
-
 app.post('/mychef', async function (request, response) {
   var data = request.body.text;
+  var none = '';
 
-  data = data.toString();
-
-  try {
-    output = await handleMessage(data);
-    let qualityStatus = 'Good! (Breathe Free)';
-    if (output > 100) {
-      qualityStatus = 'Bad (Wear Mask)';
-    } else if (output > 75 && output < 100) {
-      qualityStatus = 'Moderate (Stay Cautious)';
-    }
+  if (data === none)
     response.send(
-      `City: ${data} -- AQI: ${output} -- Status: ${qualityStatus}`
+      'Hello! My name is myAQI. I have massive collection of AQIs. Call me any time to know about em!'
     );
-  } catch (e) {
-    response.send(`Sorry unable to find any data for ${data}`);
+  else if (data === 'help')
+    response.send("Hello! Type '/myAQI (city name)' to know its AQI");
+  else {
+    data = data.toString();
+
+    try {
+      output = await handleMessage(data);
+      let qualityStatus = 'Good! (Breathe Free)';
+      if (output > 100) {
+        qualityStatus = 'Bad (Wear Mask)';
+      } else if (output > 75 && output < 100) {
+        qualityStatus = 'Moderate (Stay Cautious)';
+      }
+      if (output.toString() === 'undefined')
+        response.send('Sorry unable to find any data for ${data}');
+      else {
+        response.send(
+          `City: ${data} -- AQI: ${output} -- Status: ${qualityStatus}`
+        );
+      }
+    } catch (e) {
+      response.send(`Sorry unable to find any data for ${data}`);
+    }
   }
 });
 
