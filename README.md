@@ -1,3 +1,3 @@
-# Chef Bot
+# Air Quality Index
 
-Random food recipe generator
+Provides Air quality index of a city

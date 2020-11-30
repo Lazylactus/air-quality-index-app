@@ -45,7 +45,7 @@ app.post('/mychef', async function (request, response) {
         );
       }
     } catch (e) {
-      response.send(`Sorry unable to find any data for ${data}`);
+      response.send(`Sorry unable to find any data for ${data}.`);
     }
   }
 });
