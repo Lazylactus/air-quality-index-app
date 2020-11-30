@@ -12,10 +12,6 @@ app.use(
 );
 app.use(express.json());
 
-app.get('/', (request, response) => {
-  response.send('Hello Stranger!');
-});
-
 // POST HANDLER
 
 app.post('/mychef', async function (request, response) {
