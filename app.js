@@ -25,7 +25,9 @@ app.post('/mychef', async function (request, response) {
   if (data === none || data == undefined)
     response.send("Heya! Type '/mychef help' to know more");
   else if (data === 'help')
-    response.send("Hello! Type '/myAQI (city name)' to know its AQI");
+    response.send(
+      "Hello! Type '/air-quality-index (city name)' to know its AQI"
+    );
   else {
     data = data.toString();
 
