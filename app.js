@@ -18,12 +18,12 @@ app.get('/', (request, response) => {
 
 // POST HANDLER
 
-app.post('/mychef', async function (request, response) {
+app.post('/air-quality-index', async function (request, response) {
   var data = request.body.text;
   var none = '';
 
   if (data === none || data == undefined)
-    response.send("Heya! Type '/mychef help' to know more");
+    response.send("Heya! Type '/air-quality-index help' to know more");
   else if (data === 'help')
     response.send(
       "Hello! Type '/air-quality-index (city name)' to know its AQI"
