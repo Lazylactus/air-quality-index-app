@@ -33,7 +33,7 @@ app.post('/mychef', async function (request, response) {
 
     try {
       output = await handleMessage(data);
-      let qualityStatus = 'Good! (Breathe Free)';
+      let qualityStatus = 'Awesome! (Breathe Free)';
       if (output > 100) {
         qualityStatus = 'Bad (Wear Mask)';
       } else if (output > 75 && output < 100) {
