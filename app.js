@@ -18,7 +18,7 @@ app.get('/', (request, response) => {
 
 // POST HANDLER
 
-app.post('/air-quality-index', async function (request, response) {
+app.post('/mychef', async function (request, response) {
   var data = request.body.text;
   var none = '';
 
